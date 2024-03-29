@@ -18,7 +18,7 @@ async function fetchEvents() {
             eventItem.classList.add('eventItem'); // Add event item class
             eventItem.innerHTML = `
                 <h2 class="eventName">${event.event_name}</h2>
-                <p class="eventDetails"><strong>Event ID:</strong> ${event._id}</p>
+                <p class="eventDetails"><strong>Event ID:</strong> ${event.event_id}</p>
                 <p class="eventDetails"><strong>Location:</strong> ${event.event_location}</p>
                 <p class="eventDetails"><strong>Date:</strong> ${new Date(event.event_date).toLocaleDateString()}</p>
                 <p class="eventDetails"><strong>Regular Price:</strong> ${event.regular_price}</p>

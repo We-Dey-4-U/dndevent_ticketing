@@ -63,7 +63,7 @@ const loginUser = async (req, res) => {
          const isAdmin = user.isAdmin || false;
 
         // Generate JWT token
-        const token = jwt.sign({ userId: user._id }, '1b3dd87c843975e2ad89e963d2950688737a217577769b4def61ad6333311c73', { expiresIn: '5h' });
+        const token = jwt.sign({ userId: user._id }, '1b3dd87c843975e2ad89e963d2950688737a217577769b4def61ad6333311c73', { expiresIn: '1y' });
 
         // Redirect to index.html with token
         res.status(201).json({ message: 'User login successfully' , token});

@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
-
+const Event = require('./Event'); // Import the Event model
 
 const ticketSchema = new mongoose.Schema({
     event_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Event',
+        type: Number,
         required: true,
     },
     user_id: {
@@ -25,7 +24,6 @@ const ticketSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-
     quantity: {
         type: Number,
         required: true,
@@ -63,20 +61,17 @@ const ticketSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-     // Other fields...
-     qrCodeImagePath: {
+    qrCodeImagePath: {
         type: String,
-        
     },
 }, { timestamps: true });
 
-// Define a virtual field for event_name
 ticketSchema.virtual('event_name', {
-    ref: 'Event', // Reference to the Event model
-    localField: 'event_id', // Field in the current schema
-    foreignField: '_id', // Field in the referenced model
-    justOne: true, // Specify whether to return a single document or an array
-    options: { select: 'event_name' } // Select only the event_name field from the referenced document
+    ref: 'Event',
+    localField: 'event_id',
+    foreignField: 'event_id', // Reference the event_id field of the Event model
+    justOne: true,
+    options: { select: 'event_name' }
 });
 
 const Ticket = mongoose.model('Ticket', ticketSchema);

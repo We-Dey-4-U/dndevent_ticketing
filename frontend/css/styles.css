@@ -1,57 +1,91 @@
 /* Add your CSS styles here */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+* {
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+}
 
 h1 {
     text-align: center;
 }
 
-/* Navbar styles */
 nav {
-    background-color: #007bff; /* Navbar background color */
-    padding: 10px 0; /* Adjust top and bottom padding */
+    background-color: #03083e;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+
+.nav-left {
+    justify-self: start;
+}
+
+.nav-right {
+    justify-self: end;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
-    text-align: center; /* Center align the list items */
+    margin: 0;
 }
 
 nav ul li {
     display: inline;
-    margin-right: 20px; /* Adjust spacing between navbar items */
+    margin-right: 20px;
 }
 
 nav ul li:last-child {
-    margin-right: 0; /* Remove margin from the last navbar item */
+    margin-right: 0;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #fff; /* Navbar item text color */
-    font-weight: bold; /* Make the text bold */
+    color: #fff;
+    font-weight: bold;
 }
 
 nav ul li a:hover {
-    color: #f0f0f0; /* Change text color on hover */
+    color: #f0f0f0;
 }
 
+.search {
+    display: flex;
+    align-items: center;
+}
 
-
-
-.container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
+.search input[type="text"] {
+    width: 200px;
+    padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
 }
+
+.search button[type="submit"] {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.search button[type="submit"]:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+
 
 h2 {
     text-align: center;
@@ -87,18 +121,13 @@ button:hover {
     background-color: #0056b3;
 }
 
+
+
 #registrationMessage {
     margin-top: 20px;
     padding: 10px;
     border-radius: 5px;
 }
-
-
-
-
-
-
-
 
 
 
@@ -186,28 +215,6 @@ button:hover {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-}
-
 .container {
     max-width: 500px;
     margin: 50px auto;
@@ -247,3 +254,475 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.newsletter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: -20px; /* Adjust spacing as needed */
+    margin-top: 1px;
+    color: #333;
+    position: relative;
+}
+
+.marquee-container {
+    background-color: #f7f7f7;
+    overflow: hidden;
+    width: 100%; /* Adjust width as needed */
+    margin-bottom: 20px;
+    border-bottom: 1px solid #808080;
+    display: flex;
+    align-items: center;
+}
+
+.marquee-container h2 {
+    margin-right: 20px; /* Adjust the spacing as needed */
+    display: inline-block;
+    text-transform: uppercase;
+    /* margin-bottom: 1.5rem; */
+    font-size: 15px; /* Adjust font size */
+    color: #807e7e; /* Text color */
+    font-weight: bold; /* Font weight */
+    font-family: Arial, sans-serif; /* Font family */
+   
+    
+}
+
+.vertical-line {
+    border-left: 1px solid black; /* Adjust the border style as needed */
+    height: 120%;
+    margin-left: 50px;
+}
+
+.marquee-inner {
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+}
+
+.highway-car img {
+   max-width: 50%; /* Adjust as needed */
+}
+
+.marquee-inner img:last-child {
+    margin-right: 10px; /* Remove margin for the last logo */
+}
+
+
+
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-inner {
+    display: inline-block;
+    transition: margin-left 2s linear; /* Adjust transition duration and timing function */
+}
+
+.marquee-inner img {
+    display: inline-block;
+    margin-right: 20px; /* Adjust margin between images */
+}
+
+.tech-slideshow {
+    height: 200px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  section {
+	display:flex;
+	flex-flow:column;
+	align-items:center;
+	div.container {
+		transition:all .3s ease;
+		h1 { margin:15px 0 0 0; }
+		h3 { margin:0 0 25px 0; }
+	}
+	@media (max-width:992px) { padding:0 20px 0 20px; }
+}
+section.slide-option {
+	margin:0 0 50px 0;
+	.no-marg { margin:0 0 0 0; }
+}
+
+div.highway-slider {
+	display:flex;
+	justify-content:center;
+	width:100%;
+	height:100px;
+	div.highway-barrier {
+		overflow:hidden;
+		position:relative;
+	}
+	ul.highway-lane {
+		display:flex;
+		height:100%;
+		li.highway-car {
+			flex:1;
+			display:flex;
+			justify-content:center;
+			align-items:center;
+			background:#fff;
+			color:#343434;
+		}
+	}
+}
+
+@keyframes translatestf {
+	0% { transform:translateX(100%);  }
+	100% { transform:translateX(-500%);  }
+}
+#stffull div.highway-barrier {
+	ul.highway-lane {
+		width:500%;
+		li.highway-car {
+			animation:translatestf 30s linear infinite;
+			h4 { font-size:28px; }
+		}
+	}
+}
+
+@keyframes translateinfinite {
+	100% { transform:translateX(calc(-180px * 12));  }
+}
+#infinite div.highway-barrier {
+	background:#fff;
+	
+	&::before,
+	&::after {
+		content: " ";
+		position:absolute;
+		z-index:9;
+		width:180px;
+		height:100%;	
+	}
+	&::before {
+		top:0;left:0;
+		background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	}
+	&::after {
+		top:0;right:0;
+		background: linear-gradient(to left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+	}
+	ul.highway-lane {
+		width:calc(180px * 24);
+		li.highway-car {
+			width:180px;
+			animation:translateinfinite 25s linear infinite;
+			span.fab {
+				font-size:65px;
+			}
+		}
+	}
+}
+
+
+
+/* Media query for small screens */
+@media only screen and (max-width: 576px) {
+    .hero img {
+        height: auto; /* Make the image responsive */
+        max-width: 100%; /* Ensure the image fits within its container */
+    }
+}
+
+
+ /* trying */
+  
+.brand-animation {
+    overflow: hidden;
+    .slider {
+      animation: slide 30s linear infinite;
+      white-space: nowrap;
+      .logos {
+        width: 100%;
+        display: inline-block;
+        margin: 0px 0;
+        .fab{
+            padding: 20px;
+      }
+
+    }
+  }
+}
+
+.text-center{
+    background: #fff;
+    position: absolute;
+    z-index: 1;
+    height: 100px;
+    width: 250px;
+    margin-left: -55px;
+    padding: 10px 30px;
+    font-size: 25px;
+}
+
+
+
+
+/* articule section */
+
+.home-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+  }
+  
+  .section {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 2px;
+    margin-top: 50px;
+  }
+  
+  .section h2 {
+    font-size: 15px;
+    color: #4caf50;
+  }
+  
+  .section p {
+    margin-top: 10px;
+  }
+  
+  .section p:last-child {
+    margin-bottom: 0;
+  }
+
+
+
+  .promo-section {
+    background-color: white;
+    padding: 50px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.promo-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.promo-text {
+    text-align: center;
+    margin-bottom: 20px; /* Increased margin between text and buttons */
+}
+
+.promo-text h2 {
+    margin-bottom: 20px;
+}
+
+.promo-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    padding: 15px 40px; /* Increased padding for larger buttons */
+    background-color: #03083e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.highway-slider {
+    overflow: hidden;
+    width: 100%;
+}
+
+.highway-barrier {
+    display: flex;
+}
+
+
+
+
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

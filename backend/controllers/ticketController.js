@@ -97,7 +97,6 @@ const purchaseEventTicket = async (req, res) => {
        // Calculate total price for the current ticket type
        const totalPrice = quantity * ticketPrice;
 
-
         // Create tickets
         const tickets = [];
         for (let i = 0; i < quantity; i++) {
@@ -107,13 +106,9 @@ const purchaseEventTicket = async (req, res) => {
             // Calculate dynamic price for this ticket
             const dynamicPrice = calculateTicketPrice(ticketPrice, event.demand_factor, event.time_factor, event.availability_factor);
            
-
-            
-
-            
             // Create the ticket with the unique secure ticket
             const ticket = await Ticket.create({
-                 event_id: event._id, 
+                 event_id: event.event_id, // Use the custom event ID with 4 numbers
                  user_id: user._id, 
                  event_name: event.event_name, 
                  email, 
@@ -129,11 +124,8 @@ const purchaseEventTicket = async (req, res) => {
            ticket.qrCodeImagePath = qrCodePath; // Associate the QR code image path with the ticket
            await ticket.save();
 
-
             // Push the ticket to the tickets array
             tickets.push(ticket);
-
-           
         }
 
         res.status(201).json({ tickets });
@@ -142,7 +134,6 @@ const purchaseEventTicket = async (req, res) => {
         res.status(500).json({ error: 'Failed to purchase event tickets' });
     }
 };
-
 
 
 

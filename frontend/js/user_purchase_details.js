@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         paymentMethodText.textContent = userTickets[0].payment_method;
         
         // Retrieve event details for the first ticket (assuming it's the same for all)
-        const eventId = typeof userTickets[0].event_id === 'object' ? userTickets[0].event_id._id : userTickets[0].event_id;
+        const eventId = userTickets[0].event_id; 
         const eventResponse = await fetch(`http://localhost:3000/api/events/${eventId}`);
         const eventData = await eventResponse.json();
         
@@ -46,16 +46,16 @@ document.addEventListener('DOMContentLoaded', async function () {
             // Handle the error accordingly
         } else {
             const event = eventData.event;
-            
+
             // Set the event flyer image source directly  <p><strong>Ticket Price:</strong> ${userTickets[0].ticket_price}</p>
             document.getElementById('eventFlyerImg').src = event.event_flyer;
-        
+            
+            // Display custom event ID in purchase details
             const purchaseDetailsDiv = document.getElementById('purchaseDetails');
-            const eventDateFormatted = new Date(event.event_date).toLocaleDateString();
             purchaseDetailsDiv.innerHTML = `
-                <p><strong>Event ID:</strong> ${eventId}</p> 
+                <p><strong>Event ID:</strong> ${event.event_id}</p> <!-- Display custom event ID -->
                 <p><strong>Event Name:</strong> ${event.event_name}</p>
-                <p class="eventDetails"><strong>Date:</strong> ${eventDateFormatted}</p> 
+                <p class="eventDetails"><strong>Date:</strong> ${new Date(event.event_date).toLocaleDateString()}</p> 
                 <p><strong>Ticket Type:</strong> ${userTickets[0].ticket_type}</p>
                 <p><strong>Quantity:</strong> ${userTickets[0].quantity}</p> 
                 <p class="eventDetails"><strong>Total Price:</strong> ${userTickets[0].total_price}</p>
@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Handle error message or feedback to the user
     }
 });
-
 
 function parseJwt(token) {
     const base64Url = token.split('.')[1];
@@ -87,6 +86,3 @@ async function handlePayment(paymentOption) {
         // Handle error message or feedback to the user
     }
 }
-
-
-
