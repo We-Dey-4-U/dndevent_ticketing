@@ -61,6 +61,8 @@ h2 {
 /* QR code container */
 #qrCodeContainer {
     text-align: center; /* Center the QR code image */
+    grid-template-columns: repeat(3, 1fr);
+  
 }
 
 /* Payment details container */

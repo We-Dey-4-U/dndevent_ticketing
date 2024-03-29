@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         } else {
             const event = eventData.event;
             
-            // Set the event flyer image source directly
+            // Set the event flyer image source directly  <p><strong>Ticket Price:</strong> ${userTickets[0].ticket_price}</p>
             document.getElementById('eventFlyerImg').src = event.event_flyer;
         
             const purchaseDetailsDiv = document.getElementById('purchaseDetails');
@@ -57,8 +57,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                 <p><strong>Event Name:</strong> ${event.event_name}</p>
                 <p class="eventDetails"><strong>Date:</strong> ${eventDateFormatted}</p> 
                 <p><strong>Ticket Type:</strong> ${userTickets[0].ticket_type}</p>
-                <p><strong>Ticket Price:</strong> ${userTickets[0].ticket_price}</p>
                 <p><strong>Quantity:</strong> ${userTickets[0].quantity}</p> 
+                <p class="eventDetails"><strong>Total Price:</strong> ${userTickets[0].total_price}</p>
             `;
         }
     } catch (error) {

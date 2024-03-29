@@ -92,8 +92,3 @@ function toggleEventCreationForm(isAdmin) {
 
 
 
-
-
-
-
-

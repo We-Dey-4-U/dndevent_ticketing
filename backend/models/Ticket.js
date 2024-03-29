@@ -31,7 +31,10 @@ const ticketSchema = new mongoose.Schema({
         required: true,
         default: 1, // Default quantity is 1
     },
-   
+    total_price: {
+        type: Number,
+        required: true,
+    },
     ticket_availability: {
         type: Boolean,
         default: true,

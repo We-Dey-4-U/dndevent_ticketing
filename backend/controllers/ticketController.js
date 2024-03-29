@@ -94,6 +94,10 @@ const purchaseEventTicket = async (req, res) => {
             return res.status(400).json({ error: 'Ticket price not available for the selected type' });
         }
 
+       // Calculate total price for the current ticket type
+       const totalPrice = quantity * ticketPrice;
+
+
         // Create tickets
         const tickets = [];
         for (let i = 0; i < quantity; i++) {
@@ -102,7 +106,11 @@ const purchaseEventTicket = async (req, res) => {
 
             // Calculate dynamic price for this ticket
             const dynamicPrice = calculateTicketPrice(ticketPrice, event.demand_factor, event.time_factor, event.availability_factor);
+           
 
+            
+
+            
             // Create the ticket with the unique secure ticket
             const ticket = await Ticket.create({
                  event_id: event._id, 
@@ -112,6 +120,7 @@ const purchaseEventTicket = async (req, res) => {
                  quantity,
                  ticket_type: ticketType, 
                  ticket_price: dynamicPrice, 
+                 total_price: totalPrice,
                  secureTicket 
                 });
            
@@ -179,5 +188,4 @@ module.exports = {
     getUserTickets,
     qrCodeExists, 
 
-    
 }
