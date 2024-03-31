@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchEvents();
     const token = getTokenFromQueryParams();
     toggleEventCreationForm(isAdmin(token));
+    calculateAndDisplayCountdown(); // Call the function to calculate and display countdown
 });
 
 async function fetchEvents() {
@@ -25,7 +26,8 @@ async function fetchEvents() {
                 <p class="eventDetails"><strong>VIP Price:</strong> ${event.vip_price}</p>
                 <p class="eventDetails"><strong>Normal Price:</strong> ${event.normal_price}</p>
                 <img class="eventFlyer" src="${event.event_flyer}" alt="Event Flyer">
-                <button class="purchaseTicketBtn" data-event-id="${event._id}">Purchase Ticket</button> <!-- Purchase Ticket button -->
+                <p class="eventCountdown" id="countdown_${event._id}"></p> 
+                <button class="purchaseTicketBtn" data-event-id="${event._id}">Purchase Ticket</button> 
             `;
 
             // Add click event listener to the Purchase Ticket button
@@ -50,6 +52,34 @@ async function fetchEvents() {
     } catch (error) {
         console.error('Error fetching events:', error);
     }
+}
+
+function calculateAndDisplayCountdown() {
+    setInterval(() => {
+        const events = document.querySelectorAll('.eventItem');
+        events.forEach(event => {
+            const eventId = event.querySelector('.purchaseTicketBtn').getAttribute('data-event-id');
+            const eventDate = new Date(event.querySelector('.eventDetails').innerText.split(':')[1].trim()).getTime();
+            const countdownElement = document.getElementById(`countdown_${eventId}`);
+            if (countdownElement) {
+                const { days, hours, minutes, seconds } = calculateCountdown(eventDate);
+                countdownElement.textContent = `Countdown: ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+            }
+        });
+    }, 1000);
+}
+
+function calculateCountdown(eventDate) {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+    if (distance < 0) {
+        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    return { days, hours, minutes, seconds };
 }
 
 function redirectToTicketPurchaseForm(eventData) {
@@ -87,6 +117,27 @@ function toggleEventCreationForm(isAdmin) {
         form.style.display = 'none';
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

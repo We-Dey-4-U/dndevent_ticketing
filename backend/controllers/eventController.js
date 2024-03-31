@@ -13,6 +13,11 @@ const createEvent = async (req, res) => {
                 return res.status(400).json({ error: 'Event flyer is required' });
             }
 
+            // Calculate countdown
+            const currentDate = new Date();
+            const eventDate = new Date(event_date);
+            const countdown = Math.max(0, Math.floor((eventDate - currentDate) / (1000 * 60 * 60 * 24))); // Calculate remaining days
+
             // Create the event with admin_email included
             const newEvent = await Event.create({ 
                 event_name, 
@@ -22,7 +27,8 @@ const createEvent = async (req, res) => {
                 vip_price,
                 regular_price,
                 normal_price,
-                admin_email: userEmail // Include admin's email
+                admin_email: userEmail, // Include admin's email
+                countdown // Include countdown
             });
 
             res.status(201).json({ event: newEvent });
@@ -43,9 +49,21 @@ const createEvent = async (req, res) => {
 };
 
 
+
+
 const getAllEvents = async (req, res) => {
     try {
+        // Fetch all events from the database
         const events = await Event.find();
+
+        // Calculate countdown for each event
+        const currentDate = new Date();
+        events.forEach(event => {
+            const eventDate = new Date(event.event_date);
+            event.countdown = Math.max(0, Math.floor((eventDate - currentDate) / (1000 * 60 * 60 * 24))); // Calculate remaining days
+        });
+
+        // Send the events with countdown information in the response
         res.json({ events });
     } catch (error) {
         console.error('Error retrieving events:', error);
