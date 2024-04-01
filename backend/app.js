@@ -36,11 +36,10 @@ const upload = multer({ storage: storage });
 // Use multer middleware for handling file uploads
 app.use(upload.single('event_flyer'));
 
-// Enable CORS
-app.use(cors({
+// Middleware for handling CORS preflight requests
+app.options('*', cors({
   credentials: true
 }));
-
 
 // Connect to MongoDB
 connect()
