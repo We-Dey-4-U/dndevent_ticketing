@@ -168,12 +168,6 @@ const qrCodeExists = () => {
 };
 
 
-
-
-
-
-
-
 module.exports = {
     purchaseEventTicket,
     getUserTickets,

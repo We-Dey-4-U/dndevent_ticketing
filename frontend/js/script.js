@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 async function fetchEvents() {
     try {
-        const response = await fetch('http://localhost:3000/api/events');
+        const response = await fetch('https://ticket-backend-1-09ex.onrender.com/api/events');
         const data = await response.json();
         const events = data.events;
 

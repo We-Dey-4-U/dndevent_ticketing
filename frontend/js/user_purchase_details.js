@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const decodedToken = parseJwt(token);
         const userId = decodedToken.userId;
 
-        const response = await fetch(`http://localhost:3000/api/tickets/user/${userId}`);
+        const response = await fetch(`https://ticket-backend-1-09ex.onrender.com/api/tickets/user/${userId}`);
         const data = await response.json();
         const userTickets = data.userTickets;
 
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         for (const ticket of userTickets) {
             // Create a new QR code image element
             const qrCodeImg = document.createElement('img');
-            qrCodeImg.src = `http://localhost:3000/qr_images/ticket_qr_${ticket._id}.png`; // Updated path to fetch images from qr_images directory
+            qrCodeImg.src = `https://ticket-backend-1-09ex.onrender.com/qr_images/ticket_qr_${ticket._id}.png`; // Updated path to fetch images from qr_images directory
             qrCodeImg.alt = 'QR Code';
             qrCodeImg.classList.add('qr-code-img');
             
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         
         // Retrieve event details for the first ticket (assuming it's the same for all)
         const eventId = userTickets[0].event_id; 
-        const eventResponse = await fetch(`http://localhost:3000/api/events/${eventId}`);
+        const eventResponse = await fetch(`https://ticket-backend-1-09ex.onrender.com/api/events/${eventId}`);
         const eventData = await eventResponse.json();
         
         if (eventData.error) {
